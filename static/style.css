@@ -28,9 +28,9 @@ body::before {
 #fan-container {
     position: absolute;
     top: -20px;
-    left: 50%;
+    left: 70%;
     transform: translateX(-50%);
-    width: 200px;
+    width: 150px;
 }
 
 #broken-fan {
@@ -141,6 +141,31 @@ body::before {
     font-size: 1em;
 }
 
+#radio-btn {
+    position: fixed;
+    top: 80px;
+    left: 75%;
+    width: 100px;     /* or 1px if you want it really tiny */
+    height: 100px;
+    opacity: 0;      /* Invisible but clickable */
+    z-index: 9999;   /* Ensure it stays on top */
+    border: color(srgb red green blue);
+    background: transparent;
+    cursor: pointer;
+    font-size: 1em
+}
+
+#menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 9999; /* Ensures it's on top */
+    padding: 0;
+}
+
 .control-btn:hover {
     background-color: #a0522d;
 }
@@ -244,4 +269,53 @@ body::before {
     40% {
         transform: scale(1.0);
     }
+}
+
+/* --- New Eavesdrop Bubble Styles --- */
+.eavesdrop-bubble {
+    position: absolute;
+    background-color: rgba(30, 20, 40, 0.85);
+    border: 1px solid #c5a880;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 25%; /* Limit the width of the bubble */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    
+    /* Animation properties */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    pointer-events: none; /* Can't be clicked when hidden */
+    z-index: 100; /* Ensure it's on top */
+}
+
+/* The 'visible' class will be added by JavaScript to show the bubble */
+.eavesdrop-bubble.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* The little triangle pointer for the bubbles */
+.eavesdrop-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Position the tail at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 15px 15px 0 15px;
+    border-style: solid;
+    border-color: rgba(30, 20, 40, 0.85) transparent transparent transparent;
+}
+
+/* --- Positioning for each bubble --- */
+/* You may need to tweak these % values to perfectly match your screen */
+#yakshi-bubble {
+    top: 28%;
+    left: 12%;
+}
+
+#gandharvan-bubble {
+    top: 35%;
+    right: 8%;
 }
