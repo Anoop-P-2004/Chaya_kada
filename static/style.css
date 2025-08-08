@@ -10,10 +10,9 @@ body, html {
     background-size: cover;
     background-attachment: fixed;
     color: #fff;
-    overflow: hidden; /* Prevents scrolling */
+    overflow: hidden; 
 }
 
-/* A dark overlay to make text more readable */
 body::before {
     content: '';
     position: absolute;
@@ -53,7 +52,7 @@ body::before {
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding-top: 150px; /* Space for the fan */
+    padding-top: 150px; 
 }
 
 #chat-container {
@@ -89,7 +88,7 @@ body::before {
 
 .user-message {
     background-color: #443322;
-    align-self: flex-end; /* Note: needs flex container to work, handled by JS */
+    align-self: flex-end; 
     text-align: right;
 }
 
@@ -145,10 +144,10 @@ body::before {
     position: fixed;
     top: 80px;
     left: 75%;
-    width: 100px;     /* or 1px if you want it really tiny */
+    width: 100px;     
     height: 100px;
-    opacity: 0;      /* Invisible but clickable */
-    z-index: 9999;   /* Ensure it stays on top */
+    opacity: 0;      
+    z-index: 9999;   
     border: color(srgb red green blue);
     background: transparent;
     cursor: pointer;
@@ -162,7 +161,7 @@ body::before {
     border: none;
     background: transparent;
     cursor: pointer;
-    z-index: 9999; /* Ensures it's on top */
+    z-index: 9999; 
     padding: 0;
 }
 
@@ -178,9 +177,8 @@ body::before {
     font-size: 1.1em;
 }
 
-/* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -227,17 +225,17 @@ body::before {
 }
 #pattu-entries {
     position: absolute;
-    top: 150px; /* Adjust based on your scroll image */
-    left: 100px; /* Adjust based on your scroll image */
-    width: 400px; /* Adjust based on your scroll image */
-    height: 550px; /* Adjust based on your scroll image */
+    top: 150px;
+    left: 100px; 
+    width: 400px; 
+    height: 550px; 
     color: #3a2d1a;
     font-size: 1.2em;
     line-height: 1.8;
     overflow-y: auto;
 }
 
-/* --- Typing Indicator Styles --- */
+
 .typing-indicator {
     padding: 10px 12px;
     display: flex;
@@ -271,36 +269,35 @@ body::before {
     }
 }
 
-/* --- New Eavesdrop Bubble Styles --- */
+
 .eavesdrop-bubble {
     position: absolute;
     background-color: rgba(30, 20, 40, 0.85);
     border: 1px solid #c5a880;
     border-radius: 10px;
     padding: 15px;
-    max-width: 25%; /* Limit the width of the bubble */
+    max-width: 25%; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     
-    /* Animation properties */
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    pointer-events: none; /* Can't be clicked when hidden */
-    z-index: 100; /* Ensure it's on top */
+    pointer-events: none;
+    z-index: 100; 
 }
 
-/* The 'visible' class will be added by JavaScript to show the bubble */
+
 .eavesdrop-bubble.visible {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
 }
 
-/* The little triangle pointer for the bubbles */
+
 .eavesdrop-bubble::after {
     content: '';
     position: absolute;
-    bottom: -15px; /* Position the tail at the bottom */
+    bottom: -15px; 
     left: 50%;
     transform: translateX(-50%);
     border-width: 15px 15px 0 15px;
@@ -308,8 +305,7 @@ body::before {
     border-color: rgba(30, 20, 40, 0.85) transparent transparent transparent;
 }
 
-/* --- Positioning for each bubble --- */
-/* You may need to tweak these % values to perfectly match your screen */
+
 #yakshi-bubble {
     top: 28%;
     left: 12%;

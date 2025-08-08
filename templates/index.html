@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interdimensional Chaya Kada</title>
-    <!-- CHANGE #1: Use url_for to link the CSS file -->
+    
     <link rel="stylesheet" href="..\static\style.css">
 </head>
 <body>
-
+    <audio id="ambiance-audio" src="..\static\audio\rain.mp3" loop></audio>
+    <audio id="fan-audio" src="..\static\audio\fan.mp3"></audio> 
+    <audio id="radio-player-audio" src="..\static\audio\radio.wav"></audio>
     <div id="fan-container">
-        <!-- The GIF from an external source is fine, no change needed -->
+        
         <img src="..\static\images\fan.png" alt="Broken Fan" id="broken-fan">
     </div>
 
@@ -44,32 +46,32 @@
 
     </div>
 
-    <!-- Menu Modal -->
+    
     <div id="menu-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" id="close-menu">&times;</span>
-            <!-- CHANGE #2: Use url_for for the menu image -->
+            
             <img src="..\static\images\menu.png" alt="Kadi Menu">
         </div>
     </div>
 
-    <!-- Pattu Book Modal -->
+    
     <div id="pattu-modal" class="modal">
         <div class="modal-content" id="pattu-book-content">
             <span class="close-btn" id="close-pattu">&times;</span>
-            <!-- CHANGE #3: Use url_for for the scroll image -->
+            
             <img src="..\static\images\pattu.png" alt="Pattu Book Scroll" id="pattu-scroll-bg">
             <div id="pattu-entries">
-                <!-- Patt entries will be added here by the AI -->
+                
             </div>
         </div>
     </div>
 
-     <!-- NEW EAVESDROP BUBBLES -->
+    
     <div id="yakshi-bubble" class="eavesdrop-bubble"></div>
     <div id="gandharvan-bubble" class="eavesdrop-bubble"></div>
 
-    <!-- CHANGE #4: Use url_for to link the JS file -->
+    
     <script src="..\static\script.js"></script>
 </body>
 </html>

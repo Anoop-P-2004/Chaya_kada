@@ -1,10 +1,12 @@
-// script.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Configuration ---
+
     const API_BASE_URL = 'http://127.0.0.1:5001';
 
-    // --- DOM Elements ---
+    
+    const fanAudio = document.getElementById('fan-audio');
+    const radioPlayerAudio = document.getElementById('radio-player-audio');
+    const ambianceAudio = document.getElementById('ambiance-audio');
     const yakshiBubble = document.getElementById('yakshi-bubble');
     const gandharvanBubble = document.getElementById('gandharvan-bubble');
     const chatWindow = document.getElementById('chat-window');
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingIndicator = document.getElementById('typing-indicator');
 
     const menuBtn = document.getElementById('menu-btn');
-    const pattuBtn = document.getElementById('pattu-btn'); // Renamed from pattu-btn for clarity
+    const pattuBtn = document.getElementById('pattu-btn'); 
     const eavesdropBtn = document.getElementById('eavesdrop-btn');
     const radioBtn = document.getElementById('radio-btn');
     const billBtn = document.getElementById('bill-btn');
@@ -26,12 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const pattuEntries = document.getElementById('pattu-entries');
     const menuImage = document.querySelector('#menu-modal img');
     
-    // --- State Management ---
+    
     let conversationHistory = [];
+    let audioStarted = false;
+    
+    function startAudio() {
+        if (audioStarted) return; 
+        ambianceAudio.volume = 0.4; 
+        ambianceAudio.play().catch(error => {
+            
+            console.error("Audio playback failed:", error);
+        });
+        
+        audioStarted = true; 
+    }
 
-    // --- ======================== ---
-    // --- API Communication Layer ---
-    // --- ======================== ---
+    
+    document.body.addEventListener('click', startAudio, { once: true });
 
     async function fetchChatResponse() {
         typingIndicator.style.display = 'flex';
@@ -54,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function fetchEavesdropSnippet() {
-        // Hide any existing bubbles immediately
+        
         yakshiBubble.classList.remove('visible');
         gandharvanBubble.classList.remove('visible');
         
@@ -64,26 +77,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Network response was not ok.');
             const data = await response.json();
     
-            // Find the specific dialogue for each character
+            
             const yakshiData = data.data.find(d => d.role.toLowerCase() === 'yakshi');
             const gandharvanData = data.data.find(d => d.role.toLowerCase() === 'gandharvan');
     
             if (yakshiData && gandharvanData) {
-                // Populate the bubbles with the text
+                
                 yakshiBubble.innerHTML = ` "${yakshiData.dialogue}"`;
                 gandharvanBubble.innerHTML = `"${gandharvanData.dialogue}"`;
     
-                // Make the bubbles appear
+                
                 yakshiBubble.classList.add('visible');
                 gandharvanBubble.classList.add('visible');
     
-                // Set a timer to make them disappear after a few seconds
+                
                 setTimeout(() => {
                     yakshiBubble.classList.remove('visible');
                     gandharvanBubble.classList.remove('visible');
-                }, 15000); // Bubbles will be visible for 8 seconds
+                }, 15000);
             } else {
-                // Fallback if the AI doesn't return the expected format
+              
                 displayMessage("You try to listen in, but the voices are muddled...", 'assistant');
             }
             
@@ -94,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             typingIndicator.style.display = 'none';
         }
     }
-    // --- NEW --- Fetches and displays the Pattu Book summary
+    
     async function fetchPattSummary() {
         typingIndicator.style.display = 'flex';
         try {
@@ -106,8 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Network response was not ok.');
             const data = await response.json();
             
-            // Populate and show the Pattu Book modal
-            pattuEntries.innerHTML = ''; // Clear previous entries
+            
+            pattuEntries.innerHTML = '';
             if (data.patt_items && data.patt_items.length > 0) {
                 let total = 0;
                 data.patt_items.forEach(item => {
@@ -117,12 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     pattuEntries.appendChild(entryDiv);
                     total += item.price;
                 });
-                // Update the main UI counter
                 document.getElementById('patt-counter').textContent = total;
             } else {
                 pattuEntries.innerHTML = "<p>Your patt is empty. Lucky you...</p>";
             }
-            pattuModal.style.display = 'flex'; // Show the modal
+            pattuModal.style.display = 'flex'; 
         } catch (error) {
             console.error("Patt API Error:", error);
             displayMessage("Chetta seems to have misplaced his pattu book...", 'assistant');
@@ -131,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- UPDATED --- Handles the JSON response for the bill
     async function fetchSarcasticBill() {
         typingIndicator.style.display = 'flex';
         try {
@@ -143,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Network response was not ok.');
             const data = await response.json();
              
-            // Format the structured bill data into a nice table for display
+            
             let formattedBill = "Here is your kanakk, as requested:\n\n<table class='bill-table'>";
             formattedBill += "<tr><th>Item</th><th>Reason</th><th>Price</th></tr>";
             data.bill.forEach(item => {
@@ -160,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- UI & State Functions (No major changes needed here) ---
+    
     function addMessageToHistory(role, content) {
         conversationHistory.push({ role, content });
     }
@@ -170,9 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDiv.className = role === 'user' ? 'user-message' : 'ai-message';
         if (type === 'eavesdrop') {
             messageDiv.style.fontStyle = 'italic';
-            messageDiv.style.backgroundColor = '#2a2a3a'; // Different color for eavesdrop
+            messageDiv.style.backgroundColor = '#2a2a3a'; 
         }
-        messageDiv.innerHTML = content.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Render newlines and bold
+        messageDiv.innerHTML = content.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         chatWindow.insertBefore(messageDiv, typingIndicator);
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
@@ -192,9 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchChatResponse();
     }
 
-    // --- ======================== ---
-    // --- Event Listeners Setup ---
-    // --- ======================== ---
 
     sendBtn.addEventListener('click', handleUserInput);
     userInput.addEventListener('keypress', (e) => {
@@ -203,16 +211,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eavesdropBtn.addEventListener('click', fetchEavesdropSnippet);
     billBtn.addEventListener('click', fetchSarcasticBill);
-    pattuBtn.addEventListener('click', fetchPattSummary); // --- UPDATED --- Now calls the dedicated function
+    pattuBtn.addEventListener('click', fetchPattSummary); 
 
-    fan.addEventListener('click', () => handleInteractionAsChat("(You touched the wobbly fan)"));
-    radioBtn.addEventListener('click', () => handleInteractionAsChat("(You fiddled with the mystical radio)"));
+    fan.addEventListener('click', () => {
+        
+        if (audioStarted) { 
+            if (fanAudio.paused) {
+                fanAudio.volume = 0.5; 
+                fanAudio.play();
+            } else {
+                fanAudio.pause();
+            }
+        }
+       
+        handleInteractionAsChat("(You touched the wobbly fan)");
+    });
+    radioBtn.addEventListener('click', () => {
+        
+        if (audioStarted) { 
+            radioPlayerAudio.currentTime = 0;
+            radioPlayerAudio.play();
+        }
+       
+        handleInteractionAsChat("(You fiddled with the mystical radio)");
+    });
     menuBtn.addEventListener('click', () => {
         menuModal.style.display = 'flex';
     });
     
     menuImage.addEventListener('click', (e) => {
-        // This is a simple way to handle menu clicks without complex image maps
+       
         const snackName = prompt("Chettan is busy. Type what you want to order (e.g., 'Pazham Pori', 'Vada'):");
         if (snackName && snackName.trim() !== '') {
             handleInteractionAsChat(`I would like to order one ${snackName.trim()}, please.`);
@@ -227,11 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target == pattuModal) pattuModal.style.display = 'none';
     });
 
-    // --- Initial Welcome Message ---
+   
     function startConversation() {
         const welcomeMessage = "Ah, a new face. Welcome to my humble chaya kada. Entha vishesham?";
         displayMessage(welcomeMessage, 'assistant');
-        addMessageToHistory('assistant', welcomeMessage); // --- UPDATED --- Ensure the first message is in history for context.
+        addMessageToHistory('assistant', welcomeMessage); 
     }
 
     startConversation();
