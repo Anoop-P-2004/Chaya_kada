@@ -315,3 +315,32 @@ body::before {
     top: 35%;
     right: 8%;
 }
+/* style.css */
+
+/* --- NEW: Unfixable Fan 2.0 Effects --- */
+
+/* 1. Define the screen shake animation */
+@keyframes shake {
+    10%, 90% { transform: translate(-2px, -1px) rotate(-1deg); }
+    20%, 80% { transform: translate(2px, 2px) rotate(1deg); }
+    30%, 50%, 70% { transform: translate(-5px, -3px) rotate(-2deg); }
+    40%, 60% { transform: translate(5px, 1px) rotate(2deg); }
+}
+/* 2. Define the light flicker animation for the overlay */
+@keyframes flicker {
+    0%, 100% { background-color: rgba(0, 0, 0, 0.4); } /* Normal */
+    25% { background-color: rgba(0, 0, 0, 0.2); } /* Dim */
+    50% { background-color: rgba(0, 0, 0, 0.6); } /* Bright flash */
+    75% { background-color: rgba(0, 0, 0, 0.3); } /* Dim */
+}
+
+/* 3. Create a class to apply both animations when triggered by JS */
+body.fan-wobble-effect {
+    /* Apply the shake animation to the entire page */
+    animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+body.fan-wobble-effect::before {
+    /* Apply the flicker animation ONLY to the dark overlay */
+    animation: flicker 0.8s linear both;
+}

@@ -214,16 +214,21 @@ document.addEventListener('DOMContentLoaded', () => {
     pattuBtn.addEventListener('click', fetchPattSummary); 
 
     fan.addEventListener('click', () => {
+        // --- NEW EFFECT LOGIC ---
+        // Add the class to trigger the CSS animations
+        document.body.classList.add('fan-wobble-effect');
+
+        // Set a timer to remove the class after the animation is done
+        // This duration should match the animation duration in the CSS (0.8s = 800ms)
+        setTimeout(() => {
+            document.body.classList.remove('fan-wobble-effect');
+        }, 800);
         
-        if (audioStarted) { 
-            if (fanAudio.paused) {
-                fanAudio.volume = 0.5; 
-                fanAudio.play();
-            } else {
-                fanAudio.pause();
-            }
+        // --- This is your existing logic, it stays the same ---
+        if (audioStarted) {
+            fanAudio.currentTime = 0;
+            fanAudio.play();
         }
-       
         handleInteractionAsChat("(You touched the wobbly fan)");
     });
     radioBtn.addEventListener('click', () => {
