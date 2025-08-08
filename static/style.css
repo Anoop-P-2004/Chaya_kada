@@ -245,3 +245,52 @@ body::before {
         transform: scale(1.0);
     }
 }
+
+/* --- New Eavesdrop Bubble Styles --- */
+.eavesdrop-bubble {
+    position: absolute;
+    background-color: rgba(30, 20, 40, 0.85);
+    border: 1px solid #c5a880;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 25%; /* Limit the width of the bubble */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    
+    /* Animation properties */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    pointer-events: none; /* Can't be clicked when hidden */
+    z-index: 100; /* Ensure it's on top */
+}
+
+/* The 'visible' class will be added by JavaScript to show the bubble */
+.eavesdrop-bubble.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* The little triangle pointer for the bubbles */
+.eavesdrop-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Position the tail at the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 15px 15px 0 15px;
+    border-style: solid;
+    border-color: rgba(30, 20, 40, 0.85) transparent transparent transparent;
+}
+
+/* --- Positioning for each bubble --- */
+/* You may need to tweak these % values to perfectly match your screen */
+#yakshi-bubble {
+    top: 28%;
+    left: 12%;
+}
+
+#gandharvan-bubble {
+    top: 35%;
+    right: 8%;
+}
