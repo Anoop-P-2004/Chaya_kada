@@ -81,7 +81,7 @@ Pattu Book
 
 Bill
 ![Bill](https://github.com/user-attachments/assets/76af3b45-881a-4990-a5af-5b15e169f4c4)
-*The bill screen displays a list of items and charges, on a prompt of "Chetta, kanak". It humorously justifies costs like a "Temporal Stabilizer Risk Fee" and a "Black Hole Residue Handling Fee," blending the mundane (Chaya, Bajji) with the extraordinary.*
+*The bill screen displays a list of items and charges, on a prompt of "Chetta, kanakk". It humorously justifies costs like a "Temporal Stabilizer Risk Fee" and a "Black Hole Residue Handling Fee," blending the mundane (Chaya, Bajji) with the extraordinary.*
 
 Mystery Fan & Radio
 ![Mystery Fan & Radio](https://github.com/user-attachments/assets/f9a9cef4-9c04-4c98-8156-4f18eb023985)
@@ -94,8 +94,8 @@ Mystery Fan & Radio
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*This demo showcases our AI-powered interactive tea shop website, where users explore a retro-themed interface, place virtual orders, and engage in playful, context-aware conversations with ‘The Chettan’ — the witty shopkeeper AI. The workflow highlights dynamic menu interactions, personalized responses, hidden Easter eggs, and smooth navigation, creating an engaging fusion of nostalgia, storytelling, and modern AI technology.*
+[Demo Video](https://drive.google.com/file/d/1qRBcamNcnMUt1H8zmtnz1uQFH4wyRvTJ/view?usp=sharing)
+<br>*This demo showcases our AI-powered interactive tea shop website, where users explore a retro-themed interface, place virtual orders, and engage in playful, context-aware conversations with ‘The Chettan’ — the witty shopkeeper AI. The workflow highlights dynamic menu interactions, personalized responses, hidden Easter eggs, and smooth navigation, creating an engaging fusion of nostalgia, storytelling, and modern AI technology.*
 
 # Additional Demos
 Check it out here: https://chaya-kada.onrender.com/
