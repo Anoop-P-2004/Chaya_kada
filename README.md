@@ -69,7 +69,6 @@ Converse with Chettan
 
 Eavesdropping
 ![Eavesdropping](https://github.com/user-attachments/assets/70392ddd-f83c-443d-b31a-c949bebb105d)
-
 *This screenshot captures an early dialogue exchange. The player orders a tea, and the shopkeeper ("Chettan") responds in "Manglish," adding the cost to the player's credit ("patt"). He then upsells snacks, offering a choice between a normal "Pazham Pori" and a mysterious "Deep Space Vada.*
 
 Kadi Menu
