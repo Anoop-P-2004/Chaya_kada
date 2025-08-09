@@ -77,7 +77,7 @@ Kadi Menu
 
 Pattu Book
 ![Pattu Book](https://github.com/user-attachments/assets/bf932ed6-3504-414a-a023-6d57fc359ab0)
-* The "Pattu Book," a digital version of a traditional credit ledger, is displayed. It shows the user's running tab for items like "chai" and "bajji," integrating a familiar cultural practice of buying on credit ("pattu") into the site's mechanics.*
+*The "Pattu Book," a digital version of a traditional credit ledger, is displayed. It shows the user's running tab for items like "chai" and "bajji," integrating a familiar cultural practice of buying on credit ("pattu") into the site's mechanics.*
 
 Bill
 ![Bill](https://github.com/user-attachments/assets/76af3b45-881a-4990-a5af-5b15e169f4c4)
@@ -95,7 +95,7 @@ Mystery Fan & Radio
 ### Project Demo
 # Video
 [Add your demo video link here]
-*Explain what the video demonstrates*
+*This demo showcases our AI-powered interactive tea shop website, where users explore a retro-themed interface, place virtual orders, and engage in playful, context-aware conversations with ‘The Chettan’ — the witty shopkeeper AI. The workflow highlights dynamic menu interactions, personalized responses, hidden Easter eggs, and smooth navigation, creating an engaging fusion of nostalgia, storytelling, and modern AI technology.*
 
 # Additional Demos
 Check it out here: https://chaya-kada.onrender.com/
